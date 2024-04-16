@@ -1,0 +1,106 @@
+Reset some basic elements
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* The main container for the navbar */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  background-color: #f8f8f8;
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: pink;
+}
+
+.by-lemi {
+  font-size: 1rem;
+  color: #333;
+}
+
+.nav {
+  display: flex;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-list li {
+  padding: 5px 10px;
+}
+
+.language {
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+}
+
+/* Show the navigation menu when 'show' class is added by the toggle button */
+.nav.show {
+  display: block;
+}
+
+/* Hide items on mobile by default */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #f8f8f8;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .nav-list li {
+    padding: 15px;
+    border-top: 1px solid #ddd;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+}
+
+/* Hide the toggle button on desktop */
+@media (min-width: 769px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav.show {
+    display: flex;
+  }
+}

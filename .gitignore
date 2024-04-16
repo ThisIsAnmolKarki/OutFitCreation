@@ -1,0 +1,9 @@
+# Ignore node_modules directories
+Backend/node_modules/
+frontend/my-react-app/node_modules/
+
+# Ignore the environment variables file
+Backend/.env
+
+# Ignore the SQL database file
+database.sql

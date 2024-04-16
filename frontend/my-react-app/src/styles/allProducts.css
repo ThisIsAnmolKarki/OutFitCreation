@@ -1,0 +1,138 @@
+.app-container {
+    display: flex;
+    /* max-width: 1200px; Adjust as necessary */
+    margin: 0 auto;
+    gap: 1rem; /* Add space between sidebar and product grid */
+  }
+  
+  .sidebar {
+    flex: 0 0 200px; /* flex-grow, flex-shrink, flex-basis */
+    margin-left: 2rem;
+    /* additional styling for sidebar */
+  }
+  
+  .products-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* This ensures items start from the beginning */
+    flex: 1; /* This allows the product grid to fill the remaining space */
+    gap: 0.5rem;
+  }
+  
+  .product {
+    /* border: 1px solid #eee; */
+    /* padding: 1rem;  */
+    width: calc(25% - 1rem); /* Adjust the width for four items per row */
+    /* text-align: center; */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  }
+  
+  .product img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* ... Rest of your CSS ... */
+  
+  /* Responsive adjustments */
+  @media (max-width: 850px) {
+    .app-container {
+      flex-direction: column;
+    }
+    
+    .sidebar {
+      width: 100%; /* Sidebar takes full width */
+      order: 2; /* Put sidebar below the products on mobile */
+    }
+    
+    .products-grid {
+      width: 100%; /* Product grid takes full width */
+    }
+    
+    .product {
+      width: calc(50% - 1rem); /* Adjust the width for two items per row */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product {
+      width: 100%; /* Full width for mobile */
+    }
+  }
+  
+  /* Hamburger menu and sidebar CSS */
+  .hamburger-button {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 20; /* Above the sidebar */
+  }
+  
+  .hamburger-icon {
+    display: inline-block;
+  }
+  
+  .sidebar {
+    width: 250px; /* Adjust width as needed */
+    background: white;
+    z-index: 10;
+    /* No fixed positioning here, sidebar is part of the normal document flow */
+    /* additional styling for sidebar */
+  }
+  
+  .sidebar.active {
+    left: 0; /* Moves the sidebar into view */
+  }
+  
+  .app-container {
+    overflow-x: hidden; /* Prevents horizontal scroll when sidebar is off-screen */
+  }
+  
+  /* Rest of your CSS... */
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -650px; /* Start off-screen */
+        height: 100%;
+        transition: left 0.3s ease;
+        width: 85%;
+      }
+    
+      .sidebar.active {
+        left: 0; /* Slide in on toggle */
+      }
+    
+      .hamburger-button {
+        display: block; /* Only shown on small screens */
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 20; /* Above sidebar */
+      }
+    
+      .app-container {
+        padding-top: 50px; /* Space for the hamburger */
+      }
+    
+      .products-grid {
+        margin-left: 0; /* No space for sidebar, it's overlaid */
+      }
+  
+    /* Full width for products on very small screens */
+    @media (max-width: 480px) {
+      .product {
+        width: 100%;
+      }
+
+    
+    }
+}
+  

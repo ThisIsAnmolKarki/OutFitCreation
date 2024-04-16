@@ -1,0 +1,23 @@
+.sorting-container {
+    display: flex;
+    justify-content: space-between; /* This will space out the filters evenly */
+    align-items: center; /* This will vertically align the filters */
+    padding: 0 20px; /* Add padding to the sides if needed */
+  }
+  
+  .filter {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .filter label {
+    font-size: 0.8em; /* Adjust the size as needed */
+    margin-bottom: 5px; /* Space between label and select */
+  }
+  
+  .filter select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Rounded corners for select elements */
+  }
+  

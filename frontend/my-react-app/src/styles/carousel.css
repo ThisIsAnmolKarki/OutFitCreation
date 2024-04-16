@@ -1,0 +1,11 @@
+.carousel-container {
+    width: 800px; /* Full width of its parent */
+    margin: auto; /* Center the carousel */
+    position: relative; /* Needed to position the images absolutely */
+    overflow: hidden; /* Hide the images that are out of the container */
+    z-index: -1;
+  }
+  
+  
+  /* You might also add some controls or indicators if needed, adjust the styles accordingly. */
+  
