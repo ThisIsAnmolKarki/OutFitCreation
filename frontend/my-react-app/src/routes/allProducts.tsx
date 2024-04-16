@@ -6,9 +6,14 @@ import EachProduct from "../components/newCollectionCompo/eachProduct";
 import "../styles/allProducts.css";
 import Sorting from "../components/sorting/Sorting";
 
-const allProducts = () => {
-const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+interface data {
+  color_id: number|null,
+  size_id: number |null;
+}
 
+const allProducts: React.FC= () => {
+const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+const [sortData, setSortData] = useState<data>();
   const product = useSelector((state:RootState) => state.product.products)
 
   const dispatch = useDispatch <AppDispatch>();
@@ -21,12 +26,15 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false);
         setIsSidebarOpen(!isSidebarOpen);
       };
     
+      const handleSortData = (datas:data)=>{
+        setSortData(datas)
+        console.log(sortData);
+      }
 
+      // console.log(sortData?.color_id);
   return (
     <>
-
-        <Sorting />
-
+        <Sorting getSortData = {handleSortData} />
         <div className="app-container">
             <button className="hamburger-button" onClick={toggleSidebar}>
                 {/* Hamburger Icon */}
@@ -41,6 +49,7 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false);
             </aside>
             <div className="products-grid">
                 {product.map((product: Product) => (
+                    
                     <EachProduct 
                         key={product.product_id}
                         product_id={product.product_id}

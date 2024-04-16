@@ -1,26 +1,35 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store/store";
 import { useEffect } from "react";
-import { getProductsAsync } from "../../store/allProducts";
+import {getProductsFeatures} from "../../store/csc"
 
-const ColorComponent = () => {
+interface props{
+     getColor: (data:number)=> void 
+}
+const ColorComponent: React.FC<props> = (props) => {
 
-  const product = useSelector((state:RootState) => state.product.products)
+  const color = useSelector((state:RootState) => state.colorSizeCategory.state.color)
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedColorId = event.target.value;
+
+    props.getColor(Number(selectedColorId));
+  };
 
   const dispatch = useDispatch <AppDispatch>();
 
     useEffect(() => {
-        dispatch(getProductsAsync())
+        dispatch(getProductsFeatures())
       },[]);
-
 
     return (
       <div className="filter color-filter">
         <label>COLOR</label>
-        <select>
-          <option value="red">Red</option>
-          <option value="blue">Blue</option>
-          <option value="green">Green</option>
+        <select onChange={handleSelectChange}>
+          {
+            color.map(col =>{
+                return <option key={col.color_id}  value={col.color_id}>{col.color}</option>
+            })
+          }
         </select>
       </div>
     );
