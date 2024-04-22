@@ -38,25 +38,25 @@ const eachProduct: React.FC<props> = (props) =>{
         [key: number]: string;
     };
 
-    // type Size_color = {
-    //     [size_id: number]: Color[];
-    // }
+    type Size_color = {
+        [size_id: number]: Color[];
+    }
 
     // it will be used in entering inside product  
-    // const sizeColorHashMap = props.M_C.reduce((acc, current) => {
-    //     const size: number = Number(current.size); // Ensure 'size' is a number
-    //     if (!acc[size]) {
-    //         acc[size] = []; // Initialize if not already present
-    //     }
+    const sizeColorHashMap = props.M_C.reduce((acc, current) => {
+        const size: number = Number(current.size); // Ensure 'size' is a number
+        if (!acc[size]) {
+            acc[size] = []; // Initialize if not already present
+        }
     
-    //     const colors: Color[] = current.color.reduce<Color[]>((ac, cur) => {
-    //         ac.push({ color: cur.color, stock: cur.stock });
-    //         return ac;
-    //     }, []);
+        const colors: Color[] = current.color.reduce<Color[]>((ac, cur) => {
+            ac.push({ color: cur.color, stock: cur.stock });
+            return ac;
+        }, []);
     
-    //     acc[size].push(...colors);
-    //     return acc;
-    // }, {} as Size_color);
+        acc[size].push(...colors);
+        return acc;
+    }, {} as Size_color);
 
 
     const csc = useSelector((state:RootState) => state.colorSizeCategory.state)

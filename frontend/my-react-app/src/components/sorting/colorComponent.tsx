@@ -11,7 +11,6 @@ const ColorComponent: React.FC<props> = (props) => {
   const color = useSelector((state:RootState) => state.colorSizeCategory.state.color)
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedColorId = event.target.value;
-
     props.getColor(Number(selectedColorId));
   };
 
@@ -25,6 +24,7 @@ const ColorComponent: React.FC<props> = (props) => {
       <div className="filter color-filter">
         <label>COLOR</label>
         <select onChange={handleSelectChange}>
+          <option value={0} defaultChecked>All Color</option>
           {
             color.map(col =>{
                 return <option key={col.color_id}  value={col.color_id}>{col.color}</option>
